@@ -20,5 +20,5 @@ public class NetworkConfig {
 
     public static String contactofagroup="http://internal.gramvaani.org:8080/vapp/api/v1/callerinfo_contact/?api_key=37ddf510e72085ef218b150ad897675faec1f683&username=surbhi&format=json&contact_list=";
 
-
+    public static String createcontact1="";
 }

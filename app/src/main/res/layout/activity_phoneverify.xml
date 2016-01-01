@@ -42,12 +42,12 @@
             android:text="GramVaani Sochna"
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#00FF68"
+            android:textColor="#000000"
             android:textSize="25sp"
             android:typeface="serif" />
 
         <EditText
-            android:id="@+id/pinvalue"
+            android:id="@+id/phonevalue1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -55,7 +55,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
-            android:textColor="#fff"
+            android:textColor="#000000"
             android:textSize="20dp"
             android:inputType="numberDecimal" >
             <requestFocus />
@@ -64,7 +64,7 @@
 
 
         <Button
-            android:id="@+id/pinsubmit"
+            android:id="@+id/phonesubmit"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:background="@drawable/nice_button"

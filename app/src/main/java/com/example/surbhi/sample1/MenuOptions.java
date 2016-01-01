@@ -45,7 +45,7 @@ public class MenuOptions extends BaseActionbar {
 
             public void onClick(View view)
             {
-                Intent i = new Intent(getApplicationContext(), MenuOptions.class);
+                Intent i = new Intent(getApplicationContext(), Recording1.class);
 
                 startActivity(i);
 
@@ -59,7 +59,7 @@ public class MenuOptions extends BaseActionbar {
             public void onClick(View view)
             {
 
-                Intent send_msg = new Intent(getApplicationContext(), MenuOptions.class);
+                Intent send_msg = new Intent(getApplicationContext(), Message1.class);
                 startActivity(send_msg);
 	    }
         });
@@ -72,7 +72,7 @@ public class MenuOptions extends BaseActionbar {
             public void onClick(View v)
             {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(getApplicationContext(),Createcontact.class);
+                Intent i = new Intent(getApplicationContext(),Createcontact1.class);
                 startActivity(i);
 
             }

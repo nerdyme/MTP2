@@ -80,6 +80,10 @@
             android:name=".Recording2"
             android:label="@string/title_activity_recording2" >
         </activity>
+        <activity
+            android:name=".Message1"
+            android:label="@string/title_activity_message1" >
+        </activity>
     </application>
 
 </manifest>
