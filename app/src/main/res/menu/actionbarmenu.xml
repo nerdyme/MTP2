@@ -1,0 +1,36 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.surbhi.sample1.Pinverify" >
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/gramvaani"
+        android:orderInCategory="100"
+        android:title="@string/gramvaani"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/view_gv_contacts"
+        android:orderInCategory="100"
+        android:title="@string/view_gv_contacts"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/open_windows_explorer"
+        android:orderInCategory="100"
+        android:title="@string/open_windows_explorer"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/logout"
+        android:orderInCategory="100"
+        android:title="@string/logout"
+        app:showAsAction="never"/>
+
+</menu>

@@ -1,0 +1,64 @@
+
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/root"
+    android:stretchColumns="*"
+    android:background="@drawable/back3"
+    android:gravity = "center_horizontal"
+    android:layout_marginStart = "15dp"
+    android:layout_marginEnd = "15dp"
+    android:scrollbars="vertical"
+    android:layout_centerVertical="true">
+
+    <TableRow android:layout_margin="0dip"
+        >
+
+        <Button
+            android:id="@+id/b1"
+            android:background="@drawable/nice_button"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:text="Choose From Phone Contacts"
+            android:layout_width="fill_parent" />
+
+
+    </TableRow>
+    <TableRow android:layout_margin="0dip">
+        <Button
+            android:id="@+id/b2"
+            android:layout_width="0dip"
+            android:background="@drawable/nice_button"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:text="Get GV Contact groups"
+            android:layout_weight="1"
+            />
+
+    </TableRow>
+    <TableRow android:layout_margin="0dip">
+        <Button
+            android:id="@+id/b3"
+            android:layout_width="0dip"
+            android:background="@drawable/nice_button"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:text="Recent Mobile Vaani Callers"
+            android:layout_weight="1"
+            />
+    </TableRow>
+
+</TableLayout>

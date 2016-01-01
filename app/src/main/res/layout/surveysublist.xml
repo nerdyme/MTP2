@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:layout_centerInParent="true" >
+
+    <Button
+        android:id="@+id/viewsurvey"
+        android:background="@drawable/nice_button"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:text="View"
+        android:layout_width="wrap_content" />
+
+    <Button
+        android:id="@+id/launchsurvey"
+        android:background="@drawable/nice_button"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:text="Launch"
+        android:layout_width="wrap_content" />
+
+</LinearLayout>

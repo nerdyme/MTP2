@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">Sample1</string>
+
+
+    <!-- For Audio recording strings -->
+    <string name="choose_format_title">Choose Audio Format</string>
+    <string name="start_recording">Record</string>
+    <string name="stop_recording">Stop</string>
+    <string name="audio_format">Format</string>
+
+
+    <string-array name="gender">
+        <item>F</item>
+        <item> M</item>
+    </string-array>
+    <string-array name="district">
+        <item>Bokaro</item>
+        <item>East Singhbhum</item>
+        <item>Ranchi</item>
+        <item>Giridih</item>
+        <item>Ramgarh</item>
+        <item>Palamu</item>
+        <item>Dhanbad</item>
+        <item>Chirkunda</item>
+        <item>Deogarh</item>
+        <item>Hazaribagh</item>
+        <item>Jamshedpur</item>
+        <item> Other</item>8950 4e47 0d0a 1a0a 0000 000d 4948 4452
+
+    </string-array>
+    <string-array name="state">
+        <item>Jharkhand</item>
+        <item>Chattisgarh  </item>
+        <item>Uttar Pradesh</item>
+        <item>Madhya Pradesh</item>
+        <item> Other</item>
+    </string-array>
+    <string-array name="city">
+        <item>Bokaro Steel city</item>
+        <item>Dhanbad</item>
+        <item>Ranchi</item>
+        <item>Phusro</item>
+        <item>Giridih</item>
+        <item>Chirkunda</item>
+        <item>Deogarh</item>
+        <item>Hazaribagh</item>
+        <item>Ramgarh</item>
+        <item>Jamshedpur</item>
+        <item> Other</item>
+    </string-array>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_menu_options">MenuOptions</string>
+    <string name="title_activity_phoneverify">Phoneverify</string>
+    <string name="title_activity_base_actionbar">BaseActionbar</string>
+
+    <!-- Action bar Menu -->
+    <string name="gramvaani"> Gramvaani Website</string>
+    <string name="view_gv_contacts">View Local Contacts </string>
+    <string name="open_windows_explorer">Open Windows Explorer </string>
+    <string name="logout"> Logout</string>
+
+    <!-- Text to Speech Converter -->
+
+    <string name="speech_prompt">Say something&#8230;</string>
+    <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
+    <string name="tap_on_mic">Tap on mic to speak</string>
+    <string name="title_activity_createcontact">Createcontact</string>
+    <string name="title_activity_surveyoptions">Surveyoptions</string>
+    <string name="title_activity_viewsurvey">Viewsurvey</string>
+    <string name="title_activity_contact_options">ContactOptions</string>
+    <string name="title_activity_createcontact1">Createcontact1</string>
+    <string name="title_activity_recording1">Recording1</string>
+    <string name="title_activity_recording2">Recording2</string>
+
+
+
+
+</resources>
