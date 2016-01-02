@@ -120,6 +120,8 @@ public class SurveyAdapter extends BaseExpandableListAdapter {
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -127,6 +129,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -171,15 +174,68 @@ public class SurveyAdapter extends BaseExpandableListAdapter {
 
         //final String childText = (String) getChild(groupPosition, childPosition);
 
+        String s1=list.get(groupPosition).get(Constants.FIRST_COLUMN);
+        String s2=list.get(groupPosition).get(Constants.SECOND_COLUMN);
+        String s3=list.get(groupPosition).get(Constants.THIRD_COLUMN);
+
+
+
         if (convertView == null) {
+            Surveyadaptermodel sam=new Surveyadaptermodel();
+            sam.Surveyadapterfill(s1,s2,s3);
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.surveysublist, null);
 
             }
+        else
+        {
+
+        }
+        viewsurvey = (Button) convertView.findViewById(R.id.viewsurvey);
+        //viewsurvey.setFocusable(false);
+
+        launchsurvey = (Button) convertView.findViewById(R.id.launchsurvey);
+        //launchsurvey.setFocusable(false);
+
+        map=list.get(groupPosition);
+        gp=groupPosition;
+        viewsurvey.setOnClickListener(new Button.OnClickListener() {
+            @Override
+
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Toast.makeText(
+                        _context,
+                        list.get(gp) + " : ", Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(_context, Viewsurvey.class);
+
+                Bundle bundle = new Bundle();
+
+                form_id=(map.get(Constants.THIRD_COLUMN));
+                bundle.putString("form_id",form_id);
+
+                //Add the bundle to the intent
+                i.putExtras(bundle);
+
+                _context.startActivity(i);
+
+            }
+        });
 
 
 
+        launchsurvey.setOnClickListener(new Button.OnClickListener() {
+            @Override
+
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(_context, ContactOptions.class);
+                _context.startActivity(i);
+
+            }
+        });
         return convertView;
     }
 
@@ -211,15 +267,27 @@ public class SurveyAdapter extends BaseExpandableListAdapter {
 
         //String headerTitle = (String) getGroup(groupPosition);
 
+        String s1=list.get(groupPosition).get(Constants.FIRST_COLUMN);
+        String s2=list.get(groupPosition).get(Constants.SECOND_COLUMN);
+        String s3=list.get(groupPosition).get(Constants.THIRD_COLUMN);
+
+
+
         if (convertView == null) {
+
 
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.surveylistgroup, null);
-            img = (ImageView) convertView.findViewById(R.id.icon);
-            txtFirst=(TextView) convertView.findViewById(R.id.surveyid);
-            txtSecond=(TextView) convertView.findViewById(R.id.surveyname);
+
+
         }
+        else{
+
+        }
+        img = (ImageView) convertView.findViewById(R.id.icon);
+        txtFirst=(TextView) convertView.findViewById(R.id.surveyid);
+        txtSecond=(TextView) convertView.findViewById(R.id.surveyname);
 
         HashMap<String, String> map=list.get(groupPosition);
 

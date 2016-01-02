@@ -11,14 +11,22 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.HashMap;
 
 
 public class Pinverify extends BaseActionbar {
@@ -34,6 +42,8 @@ public class Pinverify extends BaseActionbar {
     public static String gcmRegId;
 
     private int currentAppVersion;
+
+    ProgressBar pb;
 
     Button b1=null;
     EditText e1 = null,e2=null;
@@ -54,6 +64,7 @@ public class Pinverify extends BaseActionbar {
             @Override
             public void onClick(View v) {
 
+               pb.setVisibility(View.VISIBLE);
                pinno= e1.getText().toString();
                 phoneno =e2.getText().toString();
 
@@ -69,24 +80,72 @@ public class Pinverify extends BaseActionbar {
 
                 }
 
-              else if(pinno.equals("") ||pinno.equals(null))
+                else if(pinno.equals("") ||pinno.equals(null))
                 {
                     Toast.makeText(getBaseContext(), "PIN Number can't be empty", Toast.LENGTH_LONG).show();
                     e1.requestFocus(0);
                 }
 
 
-                else if (pinno.length()!=4)
+                else if (pinno.contains("[0-9]+") == false && pinno.length()!=6)
                 {
                     Toast.makeText(getBaseContext(), "Enter valid PIN Number", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
+
                    String req = pinno+"  "+phoneno+ "  " + gcmRegId;
                    Log.d("TAG","Register Response: " + req);
-                   Toast.makeText(getApplicationContext(),req,Toast.LENGTH_LONG).show();
-                   Intent menu = new Intent(getApplicationContext(),Pinverify.class);
-                    startActivity(menu);
+
+                    HashMap<String, String> loginparams = new HashMap<String, String>();
+                    loginparams.put("pin", pinno);
+                    loginparams.put("phone",phoneno);
+                    loginparams.put("gcmid",Pinverify.gcmRegId);
+
+                    JsonObjectRequest request1 = new JsonObjectRequest(NetworkConfig.login1, new JSONObject(loginparams),
+                            new Response.Listener<JSONObject>() {
+
+                                @Override
+                                public void onResponse(JSONObject response) {
+
+                                    pb.setVisibility(View.GONE);
+                                    try {
+
+
+                                            String s1 = response.get("message").toString();
+                                        if(s1.equals("invalid credentails"))
+                                            Toast.makeText(getApplicationContext(),s1,Toast.LENGTH_LONG).show();
+                                        else
+                                        {
+                                            Intent i= new Intent(getApplicationContext(),MenuOptions.class);
+                                            startActivity(i);
+                                        }
+                                            //pb.setVisibility(View.GONE);
+                                    }
+
+                                    catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+
+
+
+                                }
+                            },
+
+                            new Response.ErrorListener() {
+
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+
+                                }
+                            }
+                    );
+
+                    VolleyApplication.getInstance().getRequestQueue().add(request1);
+
+
+
 
                 }
             }
@@ -129,6 +188,7 @@ public class Pinverify extends BaseActionbar {
             if (Pinverify.gcmRegId.isEmpty() || savedAppVersion != currentAppVersion) {
 
                 setContentView(R.layout.activity_pinverify);
+                pb= (ProgressBar)findViewById(R.id.progressBar2);
                 String msg = "Obtaining GCM Registartion Id for device" + Pinverify.gcmRegId;
                 Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                 System.out.println("*************Obtained GCM ID is********** :: " + Pinverify.gcmRegId);

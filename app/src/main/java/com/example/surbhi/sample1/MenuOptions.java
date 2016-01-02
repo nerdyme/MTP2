@@ -39,7 +39,7 @@ public class MenuOptions extends BaseActionbar {
 
     public void addListenerOnButton() {
 
-       audio = (Button) findViewById(R.id.audio);
+        audio = (Button) findViewById(R.id.audio);
         audio.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -62,7 +62,7 @@ public class MenuOptions extends BaseActionbar {
                 Intent send_msg = new Intent(getApplicationContext(), Message1.class);
                 startActivity(send_msg);
 	    }
-        });
+                });
 
 
         contact = (Button) findViewById(R.id.contact);
