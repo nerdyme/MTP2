@@ -12,12 +12,12 @@
     <TextView
         android:id="@+id/msg1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="wrap_content"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
         android:layout_alignParentTop="true"
         android:layout_marginTop="64dp"
-        android:text="Type your message here :"
+        android:text="TYPE YOUR MESSAGE"
         android:singleLine="true"
-        android:textColor="#ff0000"
+        android:textColor="#000000"
         android:layout_centerInParent="true"
         android:typeface="sans"
         android:textSize="30dp" />
@@ -27,7 +27,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/msg1"
         android:layout_marginTop="100dp"
         android:ems="10"
         android:inputType="textMultiLine" >
@@ -40,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:layout_marginTop="325dp"
+        android:layout_marginTop="225dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/ico_mic"
         android:scaleType="fitXY"
@@ -58,9 +57,5 @@
         android:layout_marginBottom="50dp"
         android:background="@drawable/nice_button"
         android:text="Pick Contacts" />
-
-    <requestFocus
-        android:layout_alignTop="@+id/msg1_value"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

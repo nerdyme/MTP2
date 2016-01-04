@@ -102,7 +102,7 @@ public class Pinverify extends BaseActionbar {
                     loginparams.put("phone",phoneno);
                     loginparams.put("gcmid",Pinverify.gcmRegId);
 
-                    JsonObjectRequest request1 = new JsonObjectRequest(NetworkConfig.login1, new JSONObject(loginparams),
+                    JsonObjectRequest request1 = new JsonObjectRequest(NetworkConfig.login, new JSONObject(loginparams),
                             new Response.Listener<JSONObject>() {
 
                                 @Override

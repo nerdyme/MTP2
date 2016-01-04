@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="fill_parent"
 android:layout_height="wrap_content"
-
 android:orientation="vertical"
 android:background="@drawable/back3">
 
@@ -34,18 +33,14 @@ android:background="@drawable/back3">
 
     <ImageButton
         android:id="@+id/btnSpeak1"
-
         android:background="@null"
-
         android:src="@drawable/ico_mic"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
 
-        android:scaleX="0.1"
-        android:scaleY="0.1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+`    </LinearLayout>
 
 <LinearLayout
     android:layout_width="fill_parent"
@@ -201,7 +196,6 @@ android:background="@drawable/back3">
             android:layout_height="wrap_content"
             android:layout_weight="0.75"
             android:ems="10"
-
             />
     </LinearLayout>
 
@@ -232,6 +226,16 @@ android:background="@drawable/back3">
         android:text="Cancel"
         android:background="@drawable/nice_button"/>
 </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar10"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center_vertical|center_horizontal" />
 
 </LinearLayout>
 

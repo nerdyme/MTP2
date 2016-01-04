@@ -6,7 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.text.Editable;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -14,13 +16,17 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,11 +36,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class Createcontact1 extends BaseActionbar {
 
     ArrayAdapter<String> adapter;
     List <String> groupNames;
+    List <String> groupIDs;
     Button submit = null;
     Button cancel = null;
     EditText name = null;
@@ -47,13 +55,16 @@ public class Createcontact1 extends BaseActionbar {
     Spinner contactgroup = null;
     ImageButton btnSpeak;
 
+    ProgressBar pb ;
 
+    int grpsize=0;
     String nv = null, pv = null, av = null, gv = null, dv = null, sv = null, cv = null, cgv = "";
     private final int REQ_CODE_SPEECH_INPUT = 100;
     // String tok = MainActivity.token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createcontact1);
         name = (EditText) findViewById(R.id.name_value);
@@ -64,16 +75,85 @@ public class Createcontact1 extends BaseActionbar {
         city = (Spinner) findViewById(R.id.city_value);
         state = (Spinner) findViewById(R.id.state_value);
         contactgroup = (Spinner) findViewById(R.id.contactgroup_value);
+        pb = (ProgressBar) findViewById(R.id.progressBar10);
+        pb.setVisibility(View.GONE);
+
+        groupNames = new ArrayList<String>();
+        groupIDs = new ArrayList<String>();
 
         populatespinner();
+        groupNames.add("Create New Group");
+        //groupNames.add("Surbhi");
+        //groupNames.add("Ajay");
+        //groupNames.add("palak");
+        //groupNames.add("Megha");
+
+        //adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_multiple_choice, groupNames);
+        adapter = new ArrayAdapter<String>(Createcontact1.this, R.layout.spinner_item, groupNames);
+        //adapter.setDropDownViewResource(android.R.layout.simple_list_item_multiple_choice);
+        Log.d("TAG", groupNames.toString());
+        System.out.print("Data is " + groupNames.size());
+        contactgroup.setAdapter(adapter);
+
+        adapter.notifyDataSetChanged();
+        grpsize=groupNames.size();
 
         contactgroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String country = parent.getItemAtPosition(position).toString();
+                if(position ==(grpsize-1))
+                {
+                    AlertDialog.Builder alert =  new AlertDialog.Builder(Createcontact1.this);
+                    final EditText edittext = new EditText(Createcontact1.this);
+                    alert.setMessage("Enter the group name");
+                    alert.setTitle("Create New Group");
+                    alert.setIcon(R.drawable.ic_launcher);
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.MATCH_PARENT);
+                    edittext.setLayoutParams(lp);
 
-                Toast.makeText(Createcontact1.this, country, Toast.LENGTH_SHORT).show();
+
+                    alert.setView(edittext);
+
+                    alert.setPositiveButton("Yes Option", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                            //What ever you want to do with the value
+                            Editable YouEditTextValue = edittext.getText();
+                            //OR
+
+                            String groupname1 = edittext.getText().toString();
+                            if(groupname1==""||groupname1.length()<3) {
+                                Toast toast = Toast.makeText(Createcontact1.this, "Please Enter GroupName!", Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
+                            }
+                            else {
+                                //Code to add group in GV
+                                createNewGroup(groupname1);
+                                groupNames.clear();
+                                groupNames.add("Create New Group");
+                                populatespinner();
+                            }
+                        }
+                    });
+
+                    alert.setNegativeButton("No Option", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            // what ever you want to do with No option.
+                                        dialog.cancel();
+                        }
+                    });
+
+                    alert.show();
+                }
+                else
+                {
+                    Toast.makeText(Createcontact1.this, country, Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -155,51 +235,57 @@ public class Createcontact1 extends BaseActionbar {
                     builder1.setTitle("Add Contact Details");
                     builder1.setPositiveButton("Confirm",
                             new DialogInterface.OnClickListener() {
+
                                 public void onClick(DialogInterface dialog, int id) {
 
-                                    JsonObjectRequest request1 = new JsonObjectRequest(NetworkConfig.createcontact1, null,
-                                            new Response.Listener<JSONObject>() {
+                                    pb.setVisibility(View.VISIBLE);
+                                    StringRequest sr = new StringRequest(Request.Method.POST, NetworkConfig.createcontact, new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
 
-                                                @Override
-                                                public void onResponse(JSONObject response) {
+                                            Log.d("TAG", "Register Response: " + response.toString());
 
-                                                    try {
-                                                        JSONArray ar1 = (JSONArray) response.get("objects");
-                                                        int len = ar1.length();
+                                            pb.setVisibility(View.GONE);
+                                            try {
+                                                JSONObject ob1 = new JSONObject(response);
 
-                                                        for (int i = 0; i < len; ++i) {
-                                                            JSONObject info = (JSONObject) ar1.get(i);
+                                                String msg = ob1.get("message").toString();
 
-                                                            String s1 = info.get("id").toString();
-                                                            String s2 = info.get("name").toString();
-                                                            JSONObject js1 = (JSONObject) info.get("form");
-                                                            String s3 = js1.get("id").toString();
+                                                if (msg.equalsIgnoreCase("Contact Created!"))
+                                                    Toast.makeText(getApplicationContext(), "Contact created successfully", Toast.LENGTH_LONG).show();
+                                                else
+                                                    Toast.makeText(getApplicationContext(), "Connection Error, Try Again", Toast.LENGTH_LONG).show();
 
-                                                            HashMap<String, String> temp = new HashMap<String, String>();
-                                                            temp.put(Constants.FIRST_COLUMN, s1);
-                                                            temp.put(Constants.SECOND_COLUMN, s2);
-                                                            temp.put(Constants.THIRD_COLUMN, s3);
-                                                            // list.add(temp);
-
-                                                        }
-                                                        //pb.setVisibility(View.GONE);
-                                                    } catch (JSONException e) {
-                                                        e.printStackTrace();
-                                                    }
-
-                                                }
-                                            },
-
-                                            new Response.ErrorListener() {
-
-                                                @Override
-                                                public void onErrorResponse(VolleyError error) {
-
-                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
                                             }
-                                    );
+                                        }
+                                    }, new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
 
-                                    VolleyApplication.getInstance().getRequestQueue().add(request1);
+                                        }
+                                    }) {
+                                        @Override
+                                        protected Map<String, String> getParams() {
+                                            Map<String, String> params = new HashMap<String, String>();
+                                            params.put("name", nv);
+                                            params.put("number", pv);
+                                            params.put("gender", gv);
+                                            params.put("gcmid", Pinverify.gcmRegId);
+                                            params.put("clist_ids", nv);
+                                            return params;
+                                        }
+
+            /*@Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/x-www-form-urlencoded");
+                return params;
+            }*/
+                                    };
+
+                                    VolleyApplication.getInstance().getRequestQueue().add(sr);
                                 }
                             });
                     builder1.setNegativeButton("Edit",
@@ -228,21 +314,16 @@ public class Createcontact1 extends BaseActionbar {
 
                         try {
                             JSONArray cast = response.getJSONArray("objects");
-
-                            groupNames = new ArrayList<String>();
-
-
                             for (int i = 0; i < cast.length(); i++) {
                                 JSONObject actor = cast.getJSONObject(i);
                                 String name = actor.getString("name");
+                                int id =actor.getInt("id");
                                 groupNames.add(name);
+                                groupIDs.add(String.valueOf(id));
+                                Log.d("Contactgroups", name);
                             }
-                            adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_multiple_choice, groupNames);
-                            adapter.setDropDownViewResource(android.R.layout.simple_list_item_multiple_choice);
 
-                            contactgroup.setAdapter(adapter);
-
-                            adapter.notifyDataSetChanged();
+                            Log.d("Contactgroups",groupNames.toString());
 
 
                         } catch (JSONException e) {
@@ -266,9 +347,61 @@ public class Createcontact1 extends BaseActionbar {
                 //pDialog.hide();
             }
         });
+        VolleyApplication.getInstance().getRequestQueue().add(jsonObjReq);
     }
 
+    void createNewGroup(final String groupname)
+    {
+        StringRequest sr = new StringRequest(Request.Method.POST,NetworkConfig.creategroup, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
+                Log.d("TAG","Create Group Response: " + response.toString());
+
+                //pb.setVisibility(View.GONE);
+             /*   try {
+                    JSONObject ob1= new JSONObject(response);
+                    String code = ob1.get("RESPONSE_SUCCESS").toString();
+                    String msg = ob1.get("RESPONSE_MESSAGE").toString();
+
+                    if(msg.equalsIgnoreCase("Data not posted!"))
+                        Toast.makeText(getApplicationContext(),"Check the input fields",Toast.LENGTH_LONG).show();
+                    else
+                        Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
+
+                }
+
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }*/
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        })  {
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("name",groupname);
+
+
+                return params;
+            }
+
+            /*@Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/x-www-form-urlencoded");
+                return params;
+            }*/
+        };
+
+        VolleyApplication.getInstance().getRequestQueue().add(sr);
+
+
+    }
     /**
      * Showing google speech input dialog
      */

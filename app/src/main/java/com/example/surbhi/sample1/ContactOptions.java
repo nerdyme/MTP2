@@ -9,11 +9,14 @@ import android.widget.Button;
 public class ContactOptions extends BaseActionbar {
 
     Button b1,b2,b3;
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_options);
 
+
+       bundle=getIntent().getExtras();
 
         b1 = (Button) findViewById(R.id.b1);
         b1.setOnClickListener(new View.OnClickListener() {
@@ -22,7 +25,8 @@ public class ContactOptions extends BaseActionbar {
             public void onClick(View v)
             {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(getApplicationContext(),Surveyoptions.class);
+                Intent i = new Intent(getApplicationContext(),ContactOptions1.class);
+                i.putExtras(bundle);
                 startActivity(i);
 
             }
@@ -35,7 +39,8 @@ public class ContactOptions extends BaseActionbar {
             public void onClick(View v)
             {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(getApplicationContext(),Surveyoptions.class);
+                Intent i = new Intent(getApplicationContext(),ContactOptions2.class);
+                i.putExtras(bundle);
                 startActivity(i);
 
             }
@@ -48,7 +53,8 @@ public class ContactOptions extends BaseActionbar {
             public void onClick(View v)
             {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(getApplicationContext(),Surveyoptions.class);
+                Intent i = new Intent(getApplicationContext(),ContactOptions.class);
+                i.putExtras(bundle);
                 startActivity(i);
 
             }

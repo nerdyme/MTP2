@@ -2,6 +2,7 @@ package com.example.surbhi.sample1;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ public class Message1 extends BaseActionbar {
 
     Button b1 =null;
     String mymsg=null;
+    TextView tv1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,8 @@ public class Message1 extends BaseActionbar {
 
         msgvalue= (EditText)findViewById(R.id.msg1_value);
         b1 = (Button) findViewById(R.id.pick);
-
+        tv1= (TextView) findViewById(R.id.msg1);
+        tv1.setTypeface(Typeface.create(tv1.getTypeface(), Typeface.BOLD_ITALIC));
         btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
 
         btnSpeak.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +64,7 @@ public class Message1 extends BaseActionbar {
                 else
                 {
                     Intent i = new Intent(getApplicationContext(),ContactOptions.class);
+                    i.putExtra("ActivityName","Message1");
                     i.putExtra("msg", mymsg);
                     startActivity(i);
                 }
