@@ -52,6 +52,7 @@ public class Pinverify extends BaseActionbar {
 
     void maintainlogin()
     {
+        pb.setVisibility(View.GONE);
 
         e1 = (EditText) findViewById(R.id.pinvalue);
         e2= (EditText) findViewById(R.id.phonevalue);
@@ -64,7 +65,7 @@ public class Pinverify extends BaseActionbar {
             @Override
             public void onClick(View v) {
 
-               pb.setVisibility(View.VISIBLE);
+
                pinno= e1.getText().toString();
                 phoneno =e2.getText().toString();
 
@@ -93,7 +94,7 @@ public class Pinverify extends BaseActionbar {
                 }
                 else
                 {
-
+                    pb.setVisibility(View.VISIBLE);
                    String req = pinno+"  "+phoneno+ "  " + gcmRegId;
                    Log.d("TAG","Register Response: " + req);
 

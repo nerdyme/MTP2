@@ -129,7 +129,6 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -199,21 +198,20 @@ public class SurveyAdapter extends BaseExpandableListAdapter {
         //launchsurvey.setFocusable(false);
 
         map=list.get(groupPosition);
+        form_id=(map.get(Constants.THIRD_COLUMN));
         gp=groupPosition;
         viewsurvey.setOnClickListener(new Button.OnClickListener() {
             @Override
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Toast.makeText(
-                        _context,
-                        list.get(gp) + " : ", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(_context,list.get(gp) + " : ", Toast.LENGTH_SHORT).show();
 
                 Intent i = new Intent(_context, Viewsurvey.class);
 
                 Bundle bundle = new Bundle();
 
-                form_id=(map.get(Constants.THIRD_COLUMN));
+
                 bundle.putString("form_id",form_id);
 
                 //Add the bundle to the intent
@@ -232,6 +230,10 @@ public class SurveyAdapter extends BaseExpandableListAdapter {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent i = new Intent(_context, ContactOptions.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("ActivityName","LaunchSurvey");
+                bundle.putString("form_id",form_id);
+                i.putExtras(bundle);
                 _context.startActivity(i);
 
             }

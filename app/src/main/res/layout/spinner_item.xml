@@ -6,7 +6,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBox10"
         android:textSize="20sp"
         android:gravity="left"
         android:textColor="#FF0000"
@@ -19,6 +19,7 @@
         android:gravity="left"
         android:textColor="#FF0000"
         android:padding="5dip"
+        android:id="@+id/textview10"
         />
 
 

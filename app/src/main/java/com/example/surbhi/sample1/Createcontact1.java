@@ -2,23 +2,31 @@ package com.example.surbhi.sample1;
 
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.text.Editable;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -38,7 +46,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class Createcontact1 extends BaseActionbar {
+public class Createcontact1 extends BaseActionbar implements AdapterView.OnItemClickListener {
 
     ArrayAdapter<String> adapter;
     List <String> groupNames;
@@ -55,6 +63,10 @@ public class Createcontact1 extends BaseActionbar {
     Spinner contactgroup = null;
     ImageButton btnSpeak;
 
+    String Grouplist;
+
+    MyAdapter ma;
+
     ProgressBar pb ;
 
     int grpsize=0;
@@ -63,7 +75,15 @@ public class Createcontact1 extends BaseActionbar {
     // String tok = MainActivity.token;
 
     @Override
+    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+        // TODO Auto-generated method stub
+        ma.toggle(arg2);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        ma = new MyAdapter();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createcontact1);
@@ -89,13 +109,17 @@ public class Createcontact1 extends BaseActionbar {
         //groupNames.add("Megha");
 
         //adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_multiple_choice, groupNames);
-        adapter = new ArrayAdapter<String>(Createcontact1.this, R.layout.spinner_item, groupNames);
+        //adapter = new ArrayAdapter<String>(Createcontact1.this, R.layout.spinner_item, groupNames);
         //adapter.setDropDownViewResource(android.R.layout.simple_list_item_multiple_choice);
-        Log.d("TAG", groupNames.toString());
-        System.out.print("Data is " + groupNames.size());
-        contactgroup.setAdapter(adapter);
 
-        adapter.notifyDataSetChanged();
+        Log.d("TAG", groupNames.toString());
+        if(groupNames!=null)
+        System.out.print("Data is " + groupNames.size());
+
+        contactgroup.setAdapter(ma);
+        ma.notifyDataSetChanged();
+
+        if(groupNames!=null)
         grpsize=groupNames.size();
 
         contactgroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -152,7 +176,9 @@ public class Createcontact1 extends BaseActionbar {
                 }
                 else
                 {
-                    Toast.makeText(Createcontact1.this, country, Toast.LENGTH_SHORT).show();
+                    populatecontactgroup();
+                    //String Company    = ((TextView) v.findViewById(R.id.company)).getText().toString();
+                    //Toast.makeText(Createcontact1.this, country, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -256,6 +282,7 @@ public class Createcontact1 extends BaseActionbar {
                                                 else
                                                     Toast.makeText(getApplicationContext(), "Connection Error, Try Again", Toast.LENGTH_LONG).show();
 
+                                                ma.notifyDataSetChanged();
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
                                             }
@@ -441,4 +468,112 @@ public class Createcontact1 extends BaseActionbar {
 
         }
     }
+
+    class MyAdapter extends BaseAdapter implements CompoundButton.OnCheckedChangeListener
+    {
+        private SparseBooleanArray mCheckStates;
+        LayoutInflater mInflater;
+        TextView tv1,tv;
+        CheckBox cb;
+        MyAdapter()
+        {
+            if(groupNames!=null)
+            mCheckStates = new SparseBooleanArray(groupNames.size());
+
+            mInflater = (LayoutInflater)Createcontact1.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
+        @Override
+        public int getCount() {
+            // TODO Auto-generated method stub
+            if(groupNames!=null)
+            return groupNames.size();
+
+            return 0;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            // TODO Auto-generated method stub
+            return position;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            // TODO Auto-generated method stub
+
+            return 0;
+        }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            // TODO Auto-generated method stub
+            View vi=convertView;
+            if(convertView==null)
+                vi = mInflater.inflate(R.layout.spinner_item, null);
+            tv= (TextView) vi.findViewById(R.id.textview10);
+
+            cb = (CheckBox) vi.findViewById(R.id.checkBox10);
+            tv.setText("Group Name :"+ groupNames.get(position));
+
+            cb.setTag(position);
+            cb.setChecked(mCheckStates.get(position, false));
+            cb.setOnCheckedChangeListener(this);
+
+            return vi;
+        }
+        public boolean isChecked(int position) {
+            return mCheckStates.get(position, false);
+        }
+
+        public void setChecked(int position, boolean isChecked) {
+            mCheckStates.put(position, isChecked);
+        }
+
+        public void toggle(int position) {
+            setChecked(position, !isChecked(position));
+        }
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView,
+                                     boolean isChecked) {
+            // TODO Auto-generated method stub
+
+            mCheckStates.put((Integer) buttonView.getTag(), isChecked);
+        }
+    }
+    void populatecontactgroup()
+    {
+        StringBuilder checkedcontacts= new StringBuilder();
+        int set=0;
+
+        if(groupNames!=null)
+        for(int i = 0; i < groupNames.size(); i++)
+
+        {
+            if(ma.mCheckStates.get(i)==true)
+            {
+                set=1;
+                checkedcontacts.append(groupNames.get(i).toString());
+                checkedcontacts.append(",");
+
+            }
+            else
+            {
+
+            }
+
+
+        }
+        if(set==1)
+        {
+            Grouplist= checkedcontacts.toString();
+
+            Grouplist = Grouplist.substring(0, Grouplist.length()-1);
+
+            //new MyAsyncTask().execute(mymsg,contactlist);
+        }
+        else
+            Toast.makeText(Createcontact1.this, "Select atleast one contact", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(Display.this, checkedcontacts,1000).show();
+    }
+
 }

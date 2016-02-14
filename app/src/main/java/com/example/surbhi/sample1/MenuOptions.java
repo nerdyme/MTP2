@@ -17,6 +17,7 @@ public class MenuOptions extends BaseActionbar {
     public Button audio=null;
     public Button message=null;
     public Button contact=null;
+    public Button contact_group=null;
 
 	/*@Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
@@ -88,6 +89,15 @@ public class MenuOptions extends BaseActionbar {
                 Intent i = new Intent(getApplicationContext(),Surveyoptions.class);
                 startActivity(i);
 
+            }
+        });
+
+        contact_group = (Button) findViewById(R.id.createnewgroup);
+        contact_group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),Creategroup1.class);
+                startActivity(i);
             }
         });
     }

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -76,7 +75,7 @@ public class Viewsurvey extends BaseActionbar {
                             public void onItemClick(AdapterView<?> parent, final View view, int position, long id)
                             {
                                 int pos=position+1;
-                                Toast.makeText(Viewsurvey.this, Integer.toString(pos) + " Clicked", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(Viewsurvey.this, Integer.toString(pos) + " Clicked", Toast.LENGTH_SHORT).show();
                             }
 
                         });

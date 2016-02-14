@@ -35,15 +35,21 @@ public class ContactOptions2 extends BaseActionbar implements AdapterView.OnItem
     List<String> groupNames;
     List<String> groupIDs;
     MyAdapter ma;
+    String mymsg = "";
     Button select;
     String grouplist="";
     ProgressBar pb;
+    Bundle bundle;
+    String actname="",form_id="",audiofile="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactoptions2);
+
+        bundle=getIntent().getExtras();
+        actname=bundle.getString("ActivityName");
 
         groupNames = new ArrayList<String>();
         groupIDs = new ArrayList<String>();
@@ -91,9 +97,35 @@ public class ContactOptions2 extends BaseActionbar implements AdapterView.OnItem
                     grouplist = grouplist.substring(0, grouplist.length()-1);
 
                     //Add volley request
+                    // Do Volley request
+                    if(actname.equalsIgnoreCase("Message1")==true)
+                    {
+                        mymsg = bundle.getString("msg");
+                        sendmessage();
+                        Toast.makeText(getApplicationContext(),"Message is successfully delivered",Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                    else if (actname.equalsIgnoreCase("LaunchSurvey")==true)
+                    {
+                        form_id=bundle.getString("form_id");
+                        sendsurvey();
+                        Toast.makeText(getApplicationContext(),"Survey is successfully launched",Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                    else if (actname.equalsIgnoreCase("SendAudio")==true)
+                    {
+                        audiofile=bundle.getString("filepath");
+                        sendaudio();
+                        Toast.makeText(getApplicationContext(),"Audio is successfully delivered",Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                    else
+                    {
+
+                    }
                 }
                 else
-                    Toast.makeText(ContactOptions2.this, "Select atleast one contact",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ContactOptions2.this, "Select atleast one contact group",Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -119,7 +151,7 @@ public class ContactOptions2 extends BaseActionbar implements AdapterView.OnItem
                     @Override
                     public void onResponse(JSONObject response) {
 
-                        pb.setVisibility(View.GONE);
+
                         try {
                             JSONArray cast = response.getJSONArray("objects");
                             for (int i = 0; i < cast.length(); i++) {
@@ -132,7 +164,7 @@ public class ContactOptions2 extends BaseActionbar implements AdapterView.OnItem
                             }
 
                             Log.d("Contactgroups",groupNames.toString());
-
+                            pb.setVisibility(View.GONE);
 
                         } catch (JSONException e) {
                             // TODO Auto-generated catch block
@@ -141,7 +173,7 @@ public class ContactOptions2 extends BaseActionbar implements AdapterView.OnItem
 
                         Log.d("Tag", response.toString());
                         // pDialog.hide();
-                        Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
 
@@ -195,6 +227,7 @@ class MyAdapter extends BaseAdapter implements CompoundButton.OnCheckedChangeLis
         View vi=convertView;
         if(convertView==null)
             vi = mInflater.inflate(R.layout.phonecontactadapter, null);
+
         tv= (TextView) vi.findViewById(R.id.textView1);
         tv1= (TextView) vi.findViewById(R.id.textView2);
         cb = (CheckBox) vi.findViewById(R.id.checkBox1);
@@ -226,5 +259,17 @@ class MyAdapter extends BaseAdapter implements CompoundButton.OnCheckedChangeLis
     }
 }
 
+    void sendmessage()
+    {
+        //Do a volley request
+    }
+    void sendaudio()
+    {
 
+    }
+
+    void sendsurvey()
+    {
+
+    }
 }

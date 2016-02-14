@@ -38,8 +38,12 @@ public class Recording2 extends BaseActionbar {
             public void onClick(View v) {
 
                 Intent i = new Intent(getApplicationContext(),ContactOptions.class);
-                i.putExtra("path", path);
+                Bundle bundle=new Bundle();
+                bundle.putString("ActivityName","SendAudio");
+                bundle.putString("filepath", path);
+                i.putExtras(bundle);
                 startActivity(i);
+
                 //new MyAsyncTask().execute(path);
 
             }

@@ -53,9 +53,10 @@ public class ContactOptions extends BaseActionbar {
             public void onClick(View v)
             {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(getApplicationContext(),ContactOptions.class);
-                i.putExtras(bundle);
-                startActivity(i);
+                //Intent i = new Intent(getApplicationContext(),ContactOptions.class);
+                //i.putExtras(bundle);
+               // startActivity(i);
+                finish();
 
             }
         });

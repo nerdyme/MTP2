@@ -33,7 +33,7 @@ public class ContactOptions1 extends BaseActionbar implements OnItemClickListene
     String mymsg = "";
     String contactlist="";
     Bundle bundle;
-    String actname="";
+    String actname="",form_id="",audiofile="";
 
     ProgressDialog progressDialog = null;
 
@@ -95,18 +95,26 @@ public class ContactOptions1 extends BaseActionbar implements OnItemClickListene
                     contactlist = contactlist.substring(0, contactlist.length()-1);
 
                     // Do Volley request
-                    if(actname.equals("Message1")==true)
+                    if(actname.equalsIgnoreCase("Message1")==true)
                     {
                         mymsg = bundle.getString("msg");
                         sendmessage();
+                        Toast.makeText(getApplicationContext(),"Message is successfully delivered",Toast.LENGTH_LONG).show();
+                        finish();
                     }
-                    else if (actname.equals("Survey")==true)
+                    else if (actname.equalsIgnoreCase("LaunchSurvey")==true)
                     {
-                            bundle.getString("surveyid");
+                        form_id=bundle.getString("form_id");
+                        sendsurvey();
+                        Toast.makeText(getApplicationContext(),"Survey is successfully launched",Toast.LENGTH_LONG).show();
+                        finish();
                     }
-                    else if (actname.equals("sendaudio")==true)
+                    else if (actname.equalsIgnoreCase("SendAudio")==true)
                     {
+                        audiofile=bundle.getString("filepath");
                         sendaudio();
+                        Toast.makeText(getApplicationContext(),"Audio is successfully delivered",Toast.LENGTH_LONG).show();
+                        finish();
                     }
                     else
                     {
@@ -223,6 +231,11 @@ public class ContactOptions1 extends BaseActionbar implements OnItemClickListene
 
     }
     void sendaudio()
+    {
+
+    }
+
+    void sendsurvey()
     {
 
     }
