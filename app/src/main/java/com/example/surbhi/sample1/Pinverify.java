@@ -15,9 +15,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -27,6 +28,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class Pinverify extends BaseActionbar {
@@ -103,7 +105,54 @@ public class Pinverify extends BaseActionbar {
                     loginparams.put("phone",phoneno);
                     loginparams.put("gcmid",Pinverify.gcmRegId);
 
-                    JsonObjectRequest request1 = new JsonObjectRequest(NetworkConfig.login, new JSONObject(loginparams),
+                    StringRequest request1 = new StringRequest(Request.Method.POST, NetworkConfig.login,
+                            new Response.Listener<String>() {
+
+
+                                @Override
+                                public void onResponse(String response) {
+
+                                    pb.setVisibility(View.GONE);
+                                    try {
+
+                                        JSONObject response1=new JSONObject(response);
+                                        String s1 = response1.get("message").toString();
+                                        if(s1.equals("invalid credentails"))
+                                            Toast.makeText(getApplicationContext(),s1,Toast.LENGTH_LONG).show();
+                                        else if(s1.equals("Successfully logged in"))
+                                        {
+                                            Intent i= new Intent(getApplicationContext(),MenuOptions.class);
+                                            startActivity(i);
+                                        }
+                                        //pb.setVisibility(View.GONE);
+                                    }
+
+                                    catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+                                }
+                            }){
+                        @Override
+                        protected Map<String,String> getParams(){
+                            Map<String,String> params = new HashMap<String, String>();
+                            params.put("pin",pinno);
+                            params.put("phone",phoneno);
+                            params.put("gcmid",Pinverify.gcmRegId);
+                            return params;
+                        }
+
+                    };
+
+
+                   /* JsonObjectRequest request1 = new JsonObjectRequest(NetworkConfig.login, new JSONObject(loginparams),
                             new Response.Listener<JSONObject>() {
 
                                 @Override
@@ -141,7 +190,7 @@ public class Pinverify extends BaseActionbar {
 
                                 }
                             }
-                    );
+                    );*/
 
                     VolleyApplication.getInstance().getRequestQueue().add(request1);
 
@@ -313,7 +362,4 @@ public class Pinverify extends BaseActionbar {
             throw new RuntimeException("Could not get package name: " + e);
         }
     }
-
-
-
 }

@@ -1,4 +1,8 @@
-
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:fillViewport="true">
 
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
@@ -23,7 +27,7 @@
             android:layout_marginLeft="15dp"
             android:textColor="#fff"
             android:textStyle="bold"
-            android:text="Add a contact"
+            android:text="@string/Add_a_contact"
             android:layout_width="fill_parent" />
 
 
@@ -39,7 +43,7 @@
             android:layout_marginLeft="15dp"
             android:textColor="#fff"
             android:textStyle="bold"
-            android:text="Create New Contact Group"
+            android:text="@string/Create_New_Contact_Group"
             android:layout_weight="1" />
 
     </TableRow>
@@ -54,7 +58,7 @@
         android:layout_marginLeft="15dp"
         android:textColor="#fff"
         android:textStyle="bold"
-        android:text="Record Audio"
+        android:text="@string/Record_Audio"
         android:layout_weight="1"
          />
 
@@ -71,7 +75,7 @@
             android:layout_marginLeft="15dp"
             android:textColor="#fff"
             android:textStyle="bold"
-            android:text="Send Message"
+            android:text="@string/Send_Message"
             android:layout_weight="1"
              />
     </TableRow>
@@ -86,10 +90,11 @@
             android:layout_marginLeft="15dp"
             android:textColor="#fff"
             android:textStyle="bold"
-            android:text="Pick Survey"
+            android:text="@string/Pick_Survey"
             android:layout_weight="1" />
 
     </TableRow>
 
 
 </TableLayout>
+    </ScrollView>

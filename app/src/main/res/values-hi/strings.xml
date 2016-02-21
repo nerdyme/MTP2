@@ -1,0 +1,92 @@
+<resources>
+    <string name="app_name">Sample1</string>
+
+
+    <!-- For Audio recording strings -->
+    <string name="choose_format_title">ऑडियो प्रारूप चुनें</string>
+    <string name="start_recording">अभिलेख</string>
+    <string name="stop_recording">रुकें</string>
+    <string name="audio_format">प्रारूप</string>
+
+
+    <string-array name="gender">
+        <item>महिला</item>
+        <item>नर</item>
+    </string-array>
+    
+    <string-array name="state">
+	    <item>झारखंड</item>
+        <item>छत्तीसगढ़</item>
+        <item>उत्तर प्रदेश</item>
+        <item>मध्य प्रदेश</item>
+        <item>अन्य</item>
+    </string-array>
+
+    <string-array name="city">
+        <item>बोकारो स्टील सिटी</item>
+        <item>धनबाद</item>
+        <item>रांची</item>
+        <item>फुसरो</item>
+        <item>गिरिडीह</item>
+        <item>चिरकुंडा</item>
+        <item>देओगढ़</item>
+        <item>हजारीबाग जिले</item>
+        <item>रामगढ़</item>
+        <item>जमशेदपुर</item>
+        <item>अन्य</item>
+    </string-array>
+
+    <string name="hello_world">नमस्ते दुनिया</string>
+    <string name="action_settings">सेटिंग</string>
+    <string name="title_activity_menu_options">मेनू विकल्प</string>
+    <string name="title_activity_phoneverify">फ़ोन सत्यापित करें</string>
+    <string name="title_activity_base_actionbar">बेस</string>
+
+    <!-- Action bar Menu -->
+
+    <string name="gramvaani">ग्राम वाणी वेबसाइट</string>
+    <string name="view_gv_contacts">स्थानीय संपर्क देखें </string>
+    <string name="open_windows_explorer"> विन्डो एक्सप्लोरर खोलें </string>
+    <string name="logout">लोग आउट</string>
+
+    <!-- Text to Speech Converter -->
+
+    <string name="speech_prompt">कुछ कहें&#8230;</string>
+    <string name="speech_not_supported">माफ़ कीजिये! आपकी डिवाइस वाक् इनपुट का समर्थन नहीं करता</string>
+    <string name="tap_on_mic">बात करने के लिए माइक को टेप करें</string>
+    <string name="title_activity_createcontact">संपर्क बनाएं</string>
+    <string name="title_activity_surveyoptions">सर्वे</string>
+    <string name="title_activity_viewsurvey">सर्वेक्षण देखें</string>
+    <string name="title_activity_contact_options">संपर्क</string>
+    <string name="title_activity_createcontact1">Createcontact1</string>
+    <string name="title_activity_recording1">Recording1</string>
+    <string name="title_activity_recording2">Recording2</string>
+    <string name="title_activity_message1">Message1</string>
+    <string name="title_activity_contact_options1">ContactOptions1</string>
+    <string name="title_activity_contactoptions2">Contactoptions2</string>
+    <string name="title_activity_creategroup1">Creategroup1</string>
+
+    <!-- Button names-->
+
+    <string name="Add_a_contact">संपर्क जोड़ें</string>
+    <string name ="Create_New_Contact_Group">नया संपर्क समूह बनाएँ</string>
+    <string name="Record_Audio">रिकार्ड ऑडियो</string>
+    <string name="Send_Message">मेसेज भेजें</string>
+    <string name="Pick_Survey">सर्वे चुनें</string>
+
+    <!--Pin Authentication -->
+    <string name="Pin_Authentication">पिन प्रमाणीकरण</string>
+    <string name="GramVaani_Sochna">ग्राम वाणी सूचना</string>
+    <string name="Enter_the_registered_number">पंजीकृत फोन नंबर दर्ज करें</string>
+    <string name="Enter_the_received_PIN">प्राप्त पिन दर्ज करें</string>
+    <string name="Authenticate_PIN">प्रमाणीकरण पिन</string>
+    <string name="Forget_your_PIN_No">आप अपना पिन भूल गए हैं?</string>
+    <string name="Powered">www.gramvaani.org द्वारा संचालित</string>
+
+    <!--Pin forget-->
+    <string name="PIN_recovery">पिन प्राप्त</string>
+    <string name="Enter_the_registered_Phone">पंजीकृत फोन दर्ज</string>
+    <string name="Receive_new_pin">नया पिन प्राप्त करने के लिए क्लिक करें</string>
+
+
+</resources>

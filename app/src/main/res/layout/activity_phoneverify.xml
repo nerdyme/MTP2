@@ -1,3 +1,9 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:fillViewport="true">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,7 +24,7 @@
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PIN Recovery"
+            android:text="@string/PIN_recovery"
             android:gravity="center"
             android:textColor="#000000"
             android:layout_marginTop="20dp"
@@ -39,7 +45,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:paddingLeft="20dp"
-            android:text="GramVaani Sochna"
+            android:text="@string/GramVaani_Sochna"
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#000000"
@@ -51,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Enter the registered Phone"
+            android:hint="@string/Enter_the_registered_Phone"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
@@ -73,7 +79,7 @@
             android:layout_marginLeft="15dp"
             android:textColor="#fff"
             android:textStyle="bold"
-            android:text="Receive New PIN" />
+            android:text="@string/Receive_new_pin" />
 
 
 
@@ -82,7 +88,7 @@
         android:id="@+id/textView3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Powered by www.grammvaani.org"
+        android:text="@string/Powered"
         android:textColor="#000"
         android:gravity="center"
         android:layout_gravity="bottom"
@@ -103,3 +109,4 @@
 
 </RelativeLayout>
 
+</ScrollView>

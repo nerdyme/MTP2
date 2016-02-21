@@ -78,7 +78,26 @@
     <string name="title_activity_contactoptions2">Contactoptions2</string>
     <string name="title_activity_creategroup1">Creategroup1</string>
 
+	<!-- Button names-->
+	
+    <string name="Add_a_contact">Add a contact</string>
+    <string name ="Create_New_Contact_Group">Create New Contact Group</string>
+    <string name="Record_Audio">Record Audio</string>
+    <string name="Send_Message">Send Message</string>
+    <string name="Pick_Survey">Pick Survey</string>
 
+    <!--Pin Authentication -->
+    <string name="Pin_Authentication">Pin Authentication</string>
+    <string name="GramVaani_Sochna">GramVaani Sochna</string>
+    <string name="Enter_the_registered_number">Enter the registered number</string>
+    <string name="Enter_the_received_PIN">Enter the received PIN</string>
+    <string name="Authenticate_PIN">Authenticate PIN</string>
+    <string name="Forget_your_PIN_No">Forget your PIN No.?</string>
+    <string name="Powered">Powered by www.gramvaani.org</string>
 
+    <!--Pin forget-->
+    <string name="PIN_recovery">PIN Recovery</string>
+    <string name="Enter_the_registered_Phone">Enter the registered Phone</string>
+    <string name="Receive_new_pin">RECEIVE NEW PIN</string>
 
 </resources>
