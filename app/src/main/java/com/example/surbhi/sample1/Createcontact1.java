@@ -133,7 +133,7 @@ public class Createcontact1 extends BaseActionbar implements AdapterView.OnItemC
                     final EditText edittext = new EditText(Createcontact1.this);
                     alert.setMessage("Enter the group name");
                     alert.setTitle("Create New Group");
-                    alert.setIcon(R.drawable.ic_launcher);
+                    alert.setIcon(R.drawable.gramvaani);
                     LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT,
                             LinearLayout.LayoutParams.MATCH_PARENT);
@@ -299,7 +299,7 @@ public class Createcontact1 extends BaseActionbar implements AdapterView.OnItemC
                                             params.put("name", nv);
                                             params.put("number", pv);
                                             params.put("gender", gv);
-                                            params.put("gcmid", Pinverify.gcmRegId);
+                                            params.put("gcmid", Constants.gcmRegId);
                                             params.put("clist_ids", nv);
                                             return params;
                                         }

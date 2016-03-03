@@ -65,6 +65,7 @@
     <string name="title_activity_contact_options1">ContactOptions1</string>
     <string name="title_activity_contactoptions2">Contactoptions2</string>
     <string name="title_activity_creategroup1">Creategroup1</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
 
     <!-- Button names-->
 
@@ -87,6 +88,20 @@
     <string name="PIN_recovery">पिन प्राप्त</string>
     <string name="Enter_the_registered_Phone">पंजीकृत फोन दर्ज</string>
     <string name="Receive_new_pin">नया पिन प्राप्त करने के लिए क्लिक करें</string>
+
+    <!-- Toast for Pin verify -->
+    <string name="Phone_Number_cant_be_empty">फोन नंबर खाली नहीं हो सकता</string>
+    <string name="Enter_valid_phone_number">वैध फोन नंबर दर्ज करें</string>
+    <string name="PIN_Number_cant_be_empty">पिन नंबर खाली नहीं हो सकता</string>
+    <string name="Enter_valid_PIN_Number"> वैध पिन नंबर दर्ज करें</string>
+    <string name="check_your_details">अवैध प्रतिक्रिया</string>
+    <string name="check_your_details_phone">व्यवस्थापक दिए गए फोन नंबर के साथ पंजीकृत नहीं है</string>
+    <string name="check_your_details_pin">अमान्य। पिन से मेल नहीं खाती! आप पिन भूल गए हैं?</string>
+
+
+    <!--Toast for forget pin-->
+    <string name="You_will_receive_pin_shortly">आप एसएमएस के माध्यम से दिए गए फोन नंबर पर जल्द ही पिन प्राप्त करेंगे </string>
+    <string name="no_user_registered">उपयोगकर्ता दिए गए फोन नंबर के साथ पंजीकृत नहीं है</string>
 
 
 </resources>

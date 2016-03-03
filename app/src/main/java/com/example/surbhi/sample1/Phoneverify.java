@@ -7,20 +7,23 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Phoneverify extends BaseActionbar {
 
     Button b1 = null;
     EditText e1 =null;
     ProgressBar pb;
+    String phoneno="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +44,7 @@ public class Phoneverify extends BaseActionbar {
                     public void onClick(View v) {
 
                         pb.setVisibility(View.VISIBLE);
-                        String phoneno = e1.getText().toString();
+                        phoneno = e1.getText().toString();
 
                         if(phoneno.equals("") ||phoneno.equals(null))
                         {
@@ -55,49 +58,106 @@ public class Phoneverify extends BaseActionbar {
                         }
                         else
                         {
-                            //Do a volley request
+                                //Do a volley request
 
 
-                            HashMap<String, String> loginparams = new HashMap<String, String>();
-                            loginparams.put("phone",phoneno);
-                            loginparams.put("gcmid",Pinverify.gcmRegId);
+                                HashMap<String, String> loginparams = new HashMap<String, String>();
+                                loginparams.put("phone",phoneno);
+                                loginparams.put("gcmid",Constants.gcmRegId);
 
-                            JsonObjectRequest request1 = new JsonObjectRequest(NetworkConfig.pinforget, new JSONObject(loginparams),
-                                    new Response.Listener<JSONObject>() {
+                            StringRequest request1 = new StringRequest(Request.Method.POST, NetworkConfig.pinforget,
+                                    new Response.Listener<String>() {
+
 
                                         @Override
-                                        public void onResponse(JSONObject response) {
+                                        public void onResponse(String response) {
 
                                             pb.setVisibility(View.GONE);
                                             try {
 
-
-                                                String s1 = response.get("message").toString();
-                                                if(s1.equals("invalid credentails"))
-                                                    Toast.makeText(getApplicationContext(),s1,Toast.LENGTH_LONG).show();
-                                                else
+                                                JSONObject response1=new JSONObject(response);
+                                                String s1 = response1.get("message").toString();
+                                                if(s1.equalsIgnoreCase("Pin number is sent on the given phone number."))
                                                 {
-                                                    Toast.makeText(getBaseContext(), "You will receive pin shortly", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(getBaseContext(), R.string.You_will_receive_pin_shortly, Toast.LENGTH_LONG).show();
                                                     finish();
                                                 }
+                                                else
+                                                {
+                                                    Toast.makeText(getBaseContext(), R.string.Enter_valid_phone_number, Toast.LENGTH_LONG).show();
                                                 }
+                                                finish();
+                                                /*Snackbar snackbar = Snackbar
+                                                        .make(coordinatorLayout, "Welcome to AndroidHive", Snackbar.LENGTH_LONG);
+
+                                                snackbar.show();*/
+
+                                                //pb.setVisibility(View.GONE);
+                                            }
 
                                             catch (JSONException e) {
                                                 e.printStackTrace();
                                             }
+
+
                                         }
                                     },
-
                                     new Response.ErrorListener() {
-
                                         @Override
                                         public void onErrorResponse(VolleyError error) {
 
+                                            if(error.toString().equalsIgnoreCase("com.android.volley.AuthFailureError"))
+                                                Toast.makeText(getApplicationContext(),R.string.no_user_registered,Toast.LENGTH_LONG).show();
+                                            else
+                                                Toast.makeText(getApplicationContext(),R.string.check_your_details,Toast.LENGTH_LONG).show();
                                         }
-                                    }
-                            );
+                                    }){
+                                @Override
+                                protected Map<String,String> getParams(){
+                                    Map<String,String> params = new HashMap<String, String>();
+                                    params.put("phone",phoneno);
+                                    params.put("gcmid",Constants.gcmRegId);
+                                    return params;
+                                }
 
-                            VolleyApplication.getInstance().getRequestQueue().add(request1);
+                            };
+
+                               /* JsonObjectRequest request1 = new JsonObjectRequest(NetworkConfig.pinforget, new JSONObject(loginparams),
+                                        new Response.Listener<JSONObject>() {
+
+                                            @Override
+                                            public void onResponse(JSONObject response) {
+
+                                                pb.setVisibility(View.GONE);
+                                                try {
+
+
+                                                    String s1 = response.get("message").toString();
+                                                    if(s1.equals("invalid credentails"))
+                                                        Toast.makeText(getApplicationContext(),s1,Toast.LENGTH_LONG).show();
+                                                    else
+                                                    {
+                                                        Toast.makeText(getBaseContext(), "You will receive pin shortly", Toast.LENGTH_LONG).show();
+                                                        finish();
+                                                    }
+                                                    }
+
+                                                catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        },
+
+                                        new Response.ErrorListener() {
+
+                                            @Override
+                                            public void onErrorResponse(VolleyError error) {
+
+                                            }
+                                        }
+                                );*/
+
+                                VolleyApplication.getInstance().getRequestQueue().add(request1);
 
 
                         }

@@ -3,7 +3,7 @@ package com.example.surbhi.sample1;
 /**
  * Created by surbhi on 8/18/15.
  */
-public class NetworkConfig {
+    public class NetworkConfig {
 
     public String server_url = "";
 
@@ -24,7 +24,7 @@ public class NetworkConfig {
 
     public static  String login="http://52.25.169.219:3000/login";
 
-    public static String pinforget="http://52.25.169.219:3000/login";
+    public static String pinforget="http://52.25.169.219:3000/getpin";
 
     public static String creategroup="http://internal.gramvaani.org:8080/vapp/api/v1/callerinfo_contact_list/?api_key=37ddf510e72085ef218b150ad897675faec1f683&username=surbhi&format=json";
 

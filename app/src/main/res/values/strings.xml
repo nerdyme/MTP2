@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sample1</string>
+    <string name="app_name">GramVaani</string>
 
 
     <!-- For Audio recording strings -->
@@ -25,7 +25,7 @@
         <item>Deogarh</item>
         <item>Hazaribagh</item>
         <item>Jamshedpur</item>
-        <item> Other</item>8950 4e47 0d0a 1a0a 0000 000d 4948 4452
+        <item> Other</item>
 
     </string-array>
     <string-array name="state">
@@ -77,6 +77,7 @@
     <string name="title_activity_contact_options1">ContactOptions1</string>
     <string name="title_activity_contactoptions2">Contactoptions2</string>
     <string name="title_activity_creategroup1">Creategroup1</string>
+    <string name="title_activity_Pinverify">Pinverify</string>
 
 	<!-- Button names-->
 	
@@ -88,7 +89,7 @@
 
     <!--Pin Authentication -->
     <string name="Pin_Authentication">Pin Authentication</string>
-    <string name="GramVaani_Sochna">GramVaani Sochna</string>
+    <string name="GramVaani_Sochna">GramVaani Soochna</string>
     <string name="Enter_the_registered_number">Enter the registered number</string>
     <string name="Enter_the_received_PIN">Enter the received PIN</string>
     <string name="Authenticate_PIN">Authenticate PIN</string>
@@ -99,5 +100,24 @@
     <string name="PIN_recovery">PIN Recovery</string>
     <string name="Enter_the_registered_Phone">Enter the registered Phone</string>
     <string name="Receive_new_pin">RECEIVE NEW PIN</string>
+
+    <!-- Toast for Pin verify -->
+    <string name="Phone_Number_cant_be_empty">Phone Number can\'t be empty</string>
+    <string name="Enter_valid_phone_number">Enter valid phone number</string>
+    <string name="PIN_Number_cant_be_empty">PIN Number can\'t be empty</string>
+    <string name="Enter_valid_PIN_Number"> Enter valid PIN Number</string>
+    <string name="check_your_details">Invalid Credentials</string>
+    <string name="check_your_details_phone">No admin registered with the given phone number</string>
+    <string name="check_your_details_pin">Invalid Credentials. Pin did not match! Forgot Pin?</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+
+    <!--Toast for forget pin-->
+    <string name="You_will_receive_pin_shortly">You will receive pin shortly via SMS on given phone number</string>
+    <string name="no_user_registered">No user registered with the given phone number</string>
+
+    <!--GCM -->
+    <string name="Google_Play_Services_not_available">Google Play Services not available</string>
+
+
 
 </resources>

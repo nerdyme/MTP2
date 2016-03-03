@@ -293,7 +293,7 @@ public class SurveyAdapter extends BaseExpandableListAdapter {
 
         HashMap<String, String> map=list.get(groupPosition);
 
-        img.setImageResource(R.drawable.ic_launcher);   // Apply condition to change image on selection
+        img.setImageResource(R.drawable.gramvaani);   // Apply condition to change image on selection
         txtFirst.setText(map.get(Constants.FIRST_COLUMN));
         txtSecond.setText(map.get(Constants.SECOND_COLUMN));
 
