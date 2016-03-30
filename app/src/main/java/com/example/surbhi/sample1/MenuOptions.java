@@ -62,7 +62,7 @@ public class MenuOptions extends BaseActionbar {
             public void onClick(View view)
             {
 
-                Intent send_msg = new Intent(getApplicationContext(), Message1.class);
+                Intent send_msg = new Intent(getApplicationContext(), Message2.class);
                 startActivity(send_msg);
 	    }
                 });

@@ -1,6 +1,8 @@
 package com.example.surbhi.sample1;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -11,14 +13,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,8 +37,9 @@ public class Creategroup1 extends BaseActionbar {
     private final int REQ_CODE_SPEECH_INPUT = 100;
 
     Button b1 =null;
-    String mymsg=null;
+    String contactgroupname=null;
     TextView tv1;
+    ProgressBar pb=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,8 @@ public class Creategroup1 extends BaseActionbar {
         msgvalue= (EditText)findViewById(R.id.grp1_value);
         b1 = (Button) findViewById(R.id.creategrp);
         tv1= (TextView) findViewById(R.id.grp1);
+        pb=(ProgressBar) findViewById(R.id.progressBar20);
+        pb.setVisibility(View.GONE);
 
         tv1.setTypeface(Typeface.create(tv1.getTypeface(), Typeface.BOLD_ITALIC));
         btnSpeak = (ImageButton) findViewById(R.id.btnSpeak1);
@@ -62,18 +70,18 @@ public class Creategroup1 extends BaseActionbar {
             public void onClick(View v)
             {
                 // TODO Auto-generated method stub
-                mymsg = msgvalue.getText().toString();
+                contactgroupname = msgvalue.getText().toString();
 
-                System.out.println("value of message" + mymsg);
+                System.out.println("value of message" + contactgroupname);
 
-                if(mymsg.equals(null) || mymsg.trim().equals("") ||mymsg.equals("") || mymsg.equalsIgnoreCase(" "))
+                if(contactgroupname.equals(null) || contactgroupname.trim().equals("") ||contactgroupname.equals("") || contactgroupname.equalsIgnoreCase(" "))
                 {
-                    Toast.makeText(getApplicationContext(), "Please enter groupname before creating", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.Please_enter_groupname_before_creating, Toast.LENGTH_LONG).show();
                 }
                 else
                 {
                    //VolleyRequest
-
+                    pb.setVisibility(View.VISIBLE);
                     createvolleyrequest();
 
                 }
@@ -88,52 +96,87 @@ public class Creategroup1 extends BaseActionbar {
             @Override
             public void onResponse(String response) {
 
+                pb.setVisibility(View.GONE);
                 Log.d("TAG", "Create Group Response: " + response.toString());
+                try {
+                    JSONObject js=new JSONObject(response.toString());
+                    String msg=js.getString("message");
+                    if (msg.equalsIgnoreCase("Contact List Created!")==true)
+                    {
+                        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(getApplicationContext());
+                        dlgAlert.setMessage(R.string.Contact_Group_Created);
+                        //dlgAlert.setTitle("App Title");
+                        dlgAlert.setPositiveButton("Ok",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dismiss the dialog
+                                        finish();
+                                    }
+                                });
+                        dlgAlert.setCancelable(true);
+                        dlgAlert.create().show();
+                        //Toast.makeText(getApplicationContext(),R.string.Contact_Group_Created,Toast.LENGTH_LONG).show();
+                        //finish();
 
-                Toast.makeText(getApplicationContext(),"Contact Group Created",Toast.LENGTH_LONG).show();
-                finish();
-                //pb.setVisibility(View.GONE);
-             /*   try {
-                    JSONObject ob1= new JSONObject(response);
-                    String code = ob1.get("RESPONSE_SUCCESS").toString();
-                    String msg = ob1.get("RESPONSE_MESSAGE").toString();
-
-                    if(msg.equalsIgnoreCase("Data not posted!"))
-                        Toast.makeText(getApplicationContext(),"Check the input fields",Toast.LENGTH_LONG).show();
+                    }
                     else
-                        Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
-
+                    {AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(getApplicationContext());
+                        dlgAlert.setMessage(R.string.Error_in_creating_Contact_Group);
+                        //dlgAlert.setTitle("App Title");
+                        dlgAlert.setPositiveButton("Ok",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dismiss the dialog
+                                        finish();
+                                    }
+                                });
+                        dlgAlert.setCancelable(true);
+                        dlgAlert.create().show();
+                        Toast.makeText(getApplicationContext(),R.string.Error_in_creating_Contact_Group,Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(),R.string.Error_in_creating_Contact_Group,Toast.LENGTH_LONG).show();
                 }
 
-                catch (JSONException e) {
-                    e.printStackTrace();
-                }*/
+                //pb.setVisibility(View.GONE);
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("TAG", "Not created Group Response: ");
-
-                Toast.makeText(getApplicationContext(),"Contact Group Created!!",Toast.LENGTH_LONG).show();
-                finish();
+                AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(getApplicationContext());
+                dlgAlert.setMessage(R.string.Error_in_creating_Contact_Group);
+                //dlgAlert.setTitle("App Title");
+                dlgAlert.setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                //dismiss the dialog
+                                finish();
+                            }
+                        });
+                dlgAlert.setCancelable(true);
+                dlgAlert.create().show();
+                Log.d("TAG", "Not created Group Response: " + error.toString());
+                //Toast.makeText(getApplicationContext(),R.string.Error_in_creating_Contact_Group,Toast.LENGTH_LONG).show();
+                //finish();
 
             }
         })  {
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
-                params.put("name",mymsg);
-
-
+                params.put("name",contactgroupname);
+                params.put("gcmid",Constants.gcmRegId);
                 return params;
             }                                                                                                                                                                                                                                                                                                                                                   
 
-            @Override
+           /* @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("Content-Type","application/json");
                 return params;
-            }
+            }*/
         };
 
         VolleyApplication.getInstance().getRequestQueue().add(sr);

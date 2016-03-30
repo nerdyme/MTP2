@@ -48,6 +48,7 @@
     <string name="view_gv_contacts">स्थानीय संपर्क देखें </string>
     <string name="open_windows_explorer"> विन्डो एक्सप्लोरर खोलें </string>
     <string name="logout">लोग आउट</string>
+    <string name="shareapp">Share</string>
 
     <!-- Text to Speech Converter -->
 
@@ -102,6 +103,17 @@
     <!--Toast for forget pin-->
     <string name="You_will_receive_pin_shortly">आप एसएमएस के माध्यम से दिए गए फोन नंबर पर जल्द ही पिन प्राप्त करेंगे </string>
     <string name="no_user_registered">उपयोगकर्ता दिए गए फोन नंबर के साथ पंजीकृत नहीं है</string>
+
+    <!--Sending Text Message -->
+    <string name="announcement_of_surveys">Announcement of Surveys</string>
+    <string name="announcement_of_camps">Announcement of Camps</string>
+    <string name="announcement_of_govtschemes">Announcement of Govt. Schemes</string>
+
+    <!--Select date for survey launch-->
+    <string name="selectdate">Select Date</string>
+
+    <!--Pick Contacts -->
+    <string name="Pick_Contacts">Pick Contacts</string>
 
 
 </resources>

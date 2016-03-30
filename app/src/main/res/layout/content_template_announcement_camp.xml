@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:background="@drawable/back3"
+    class="com.example.surbhi.sample1.TemplateAnnouncementCamp">
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+
+    android:layout_marginRight="30dp"
+    android:layout_marginTop="35dp"
+    android:layout_marginBottom="15dp">
+
+    <TextView
+        android:id="@+id/campname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        android:text="@string/campname"
+        />
+
+    <Spinner
+        android:id="@+id/camp_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.75"
+        android:ems="10"
+        android:entries="@array/campnames"
+        />
+    <requestFocus/>
+    `    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/campstartdate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        android:text="@string/campstartdate"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/selectstartdateforcamp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:editable="false" >
+    </EditText>
+
+    <ImageButton
+        android:id="@+id/cal2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/campstartdate"
+        android:cropToPadding="true"
+        android:src="@drawable/cal2" />
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/campenddate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        android:text="@string/campenddate"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/selectenddateforcamp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:editable="false" >
+    </EditText>
+
+    <ImageButton
+        android:id="@+id/calendericon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/selectdate"
+        android:cropToPadding="true"
+        android:src="@drawable/cal2" />
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/campvenue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        android:text="@string/campvenue" />
+
+    <EditText
+        android:id="@+id/campvenue_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.75"
+        android:ems="10"
+        android:inputType="text" />
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="50dp" >
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25" />
+
+    <Button
+        android:id="@+id/pick10"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/nice_button"
+        android:text="@string/pick_contacts" />
+
+</LinearLayout>
+
+<ProgressBar
+    android:id="@+id/progressBar11"
+    style="?android:attr/progressBarStyleLarge"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="60dp"
+    android:layout_gravity="center_vertical|center_horizontal" />
+
+</LinearLayout>
+

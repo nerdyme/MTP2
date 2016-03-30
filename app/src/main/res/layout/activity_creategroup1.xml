@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="64dp"
-        android:text="Enter Contact Group Name"
+        android:text="@string/Enter_Contact_Group_Name"
         android:singleLine="true"
         android:textColor="#000000"
         android:layout_centerInParent="true"
@@ -56,6 +56,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
         android:background="@drawable/nice_button"
-        android:text="Create Group" />
+        android:text="@string/Create_New_Contact_Group" />
+
+    <ProgressBar
+        android:id="@+id/progressBar20"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center_vertical|center_horizontal" />
+
+
 
 </RelativeLayout>

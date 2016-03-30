@@ -3,14 +3,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="@drawable/back3">
+    android:background="@drawable/back3">
 
 <ImageView
     android:id="@+id/imgLogo"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerInParent="true"
-    android:src="@drawable/gramvaani" />
+    android:scaleType="fitXY"
+    android:src="@drawable/splash1" />
 
 <TextView
     android:layout_width="fill_parent"

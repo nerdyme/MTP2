@@ -1,0 +1,70 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:fillViewport="true">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/root"
+        android:stretchColumns="*"
+        android:background="@drawable/back3"
+        android:gravity = "center_horizontal"
+        android:layout_marginStart = "15dp"
+        android:layout_marginEnd = "15dp"
+        >
+
+        <TableRow android:layout_margin="0dip"
+            >
+
+            <Button
+                android:id="@+id/announcementsurvey"
+                android:background="@drawable/nice_button"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:text="@string/announcement_of_surveys"
+                android:layout_width="fill_parent" />
+
+
+        </TableRow>
+        <TableRow android:layout_margin="0dip">
+            <Button
+                android:id="@+id/announcementgovtscheme"
+                android:layout_width="0dip"
+                android:background="@drawable/nice_button"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:text="@string/announcement_of_govtschemes"
+                android:layout_weight="1" />
+
+        </TableRow>
+        <TableRow android:layout_margin="0dip">
+            <Button
+                android:id="@+id/announcementcamp"
+                android:layout_width="0dip"
+                android:background="@drawable/nice_button"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:text="@string/announcement_of_camps"
+                android:layout_weight="1"
+                />
+
+        </TableRow>
+
+
+
+    </TableLayout>
+</ScrollView>

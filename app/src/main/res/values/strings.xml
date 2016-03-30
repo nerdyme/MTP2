@@ -13,6 +13,7 @@
         <item>F</item>
         <item> M</item>
     </string-array>
+
     <string-array name="district">
         <item>Bokaro</item>
         <item>East Singhbhum</item>
@@ -26,8 +27,8 @@
         <item>Hazaribagh</item>
         <item>Jamshedpur</item>
         <item> Other</item>
-
     </string-array>
+
     <string-array name="state">
         <item>Jharkhand</item>
         <item>Chattisgarh  </item>
@@ -35,6 +36,7 @@
         <item>Madhya Pradesh</item>
         <item> Other</item>
     </string-array>
+
     <string-array name="city">
         <item>Bokaro Steel city</item>
         <item>Dhanbad</item>
@@ -49,6 +51,26 @@
         <item> Other</item>
     </string-array>
 
+    <string-array name="campnames">
+
+        <item>Health Camps</item>
+        <item>Agriculture</item>
+        <item>Government Campaign</item>
+        <item>Polio Camps</item>
+        <item>Vaccination Camps</item>
+    </string-array>
+
+    <string-array name="beneficiaries">
+        <item>Women</item>
+        <item>Children</item>
+        <item>Landlords</item>
+        <item>Tenants</item>
+        <item>Farmers</item>
+        <item>Local Shopkeepers</item>
+        <item>School Teachers</item>
+        <item>All</item>
+    </string-array>
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_menu_options">MenuOptions</string>
@@ -60,6 +82,7 @@
     <string name="view_gv_contacts">View Local Contacts </string>
     <string name="open_windows_explorer">Open Windows Explorer </string>
     <string name="logout"> Logout</string>
+    <string name="share_app">Share</string>
 
     <!-- Text to Speech Converter -->
 
@@ -78,11 +101,11 @@
     <string name="title_activity_contactoptions2">Contactoptions2</string>
     <string name="title_activity_creategroup1">Creategroup1</string>
     <string name="title_activity_Pinverify">Pinverify</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
 
-	<!-- Button names-->
-	
+    <!-- Main Menu Button names-->
     <string name="Add_a_contact">Add a contact</string>
-    <string name ="Create_New_Contact_Group">Create New Contact Group</string>
+    <string name="Create_New_Contact_Group">Create New Contact Group</string>
     <string name="Record_Audio">Record Audio</string>
     <string name="Send_Message">Send Message</string>
     <string name="Pick_Survey">Pick Survey</string>
@@ -109,15 +132,54 @@
     <string name="check_your_details">Invalid Credentials</string>
     <string name="check_your_details_phone">No admin registered with the given phone number</string>
     <string name="check_your_details_pin">Invalid Credentials. Pin did not match! Forgot Pin?</string>
-    <string name="title_activity_splash_screen">SplashScreen</string>
+
 
     <!--Toast for forget pin-->
     <string name="You_will_receive_pin_shortly">You will receive pin shortly via SMS on given phone number</string>
     <string name="no_user_registered">No user registered with the given phone number</string>
 
+    <!--Toast for Contact group creation -->
+    <string name="Enter_Contact_Group_Name">Enter Contact Group Name</string>
+    <string name="Create_Group">Create Group</string>
+    <string name="Please_enter_groupname_before_creating">Please enter groupname before creating</string>
+    <string name="Error_in_creating_Contact_Group">Error in creating Contact Group, Try Again</string>
+    <string name="Contact_Group_Created">Contact Group Created</string>
+
     <!--GCM -->
     <string name="Google_Play_Services_not_available">Google Play Services not available</string>
+    <string name="title_activity_message2">Message2</string>
+
+    <!--Sending Text Message -->
+    <string name="announcement_of_surveys">Announcement of Surveys</string>
+    <string name="announcement_of_camps">Announcement of Camps</string>
+    <string name="announcement_of_govtschemes">Announcement of Govt. Schemes</string>
+    <string name="title_activity_template_announcement_survey">TemplateAnnouncementSurvey</string>
+    <string name="title_activity_template_announcement_camp">TemplateAnnouncementCamp</string>
+    <string name="title_activity_template_announcement_govtscheme">TemplateAnnouncementGovtscheme</string>
+
+    <!-- Template for survey launch Announcement -->
+    <string name="selectdate">Select Date</string>
 
 
+    <!--Template for Camp Announcement -->
+    <string name="campname">Camp Name : </string>
+    <string name="campstartdate">Start Date : </string>
+    <string name ="campenddate">End Date : </string>
+    <string name="campvenue">Venue : </string>
+    <string name="campnametoast">Camp Name can\'t be empty.</string>
+    <string name="startdatetoast">Start date can\'t be empty.</string>
+    <string name="enddatetoast"> End date can\'t be empty.</string>
+    <string name="venuenametoast">Venue name can\'t be empty.</string>
+
+    <!--Template for Govt Scheme Announcement -->
+    <string name="govtschemename"> Scheme Name : </string>
+    <string name="govtschemestartdate"> Start Date : </string>
+    <string name = "govtschemebeneficiary"> Beneficiary : </string>
+    <string name="govtschemenametoast"> Scheme Name can\'t be empty. </string>
+    <string name="govtschemestartdatetoast"> Start Date can\'t be empty.</string>
+    <string name = "govtschemebeneficiarytoast"> Beneficiary can\'t be empty </string>
+
+    <!--pick contacts -->
+    <string name="pick_contacts">Pick Contacts</string>
 
 </resources>

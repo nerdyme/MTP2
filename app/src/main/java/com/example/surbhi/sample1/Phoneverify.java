@@ -122,40 +122,7 @@ public class Phoneverify extends BaseActionbar {
 
                             };
 
-                               /* JsonObjectRequest request1 = new JsonObjectRequest(NetworkConfig.pinforget, new JSONObject(loginparams),
-                                        new Response.Listener<JSONObject>() {
 
-                                            @Override
-                                            public void onResponse(JSONObject response) {
-
-                                                pb.setVisibility(View.GONE);
-                                                try {
-
-
-                                                    String s1 = response.get("message").toString();
-                                                    if(s1.equals("invalid credentails"))
-                                                        Toast.makeText(getApplicationContext(),s1,Toast.LENGTH_LONG).show();
-                                                    else
-                                                    {
-                                                        Toast.makeText(getBaseContext(), "You will receive pin shortly", Toast.LENGTH_LONG).show();
-                                                        finish();
-                                                    }
-                                                    }
-
-                                                catch (JSONException e) {
-                                                    e.printStackTrace();
-                                                }
-                                            }
-                                        },
-
-                                        new Response.ErrorListener() {
-
-                                            @Override
-                                            public void onErrorResponse(VolleyError error) {
-
-                                            }
-                                        }
-                                );*/
 
                                 VolleyApplication.getInstance().getRequestQueue().add(request1);
 

@@ -1,13 +1,8 @@
 package com.example.surbhi.sample1;
 
-import org.json.JSONObject;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -68,6 +63,10 @@ public class BaseActionbar extends ActionBarActivity {
         	Intent intent = new Intent(Intent.ACTION_VIEW);
         	intent.setDataAndType(selectedUri, "resource/folder");
         	startActivity(intent);*/
+            return true;
+        }
+       else if (id == R.id.share_app)
+        {
             return true;
         }
         return super.onOptionsItemSelected(item);

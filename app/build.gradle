@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+
+
 android {
     compileSdkVersion 23
     buildToolsVersion '21.1.2'
@@ -29,14 +31,20 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.google.android.gms:play-services:8.3.0'
+    //compile 'com.google.android.gms:play-services:8.3.0'
 
-    compile "com.android.support:support-v4:23.0.0"
-    compile "com.android.support:support-v13:23.0.0"
-    compile "com.android.support:cardview-v7:23.0.0"
-    compile 'com.google.android.gms:play-services-location:7.3.0'
-    compile 'com.google.android.gms:play-services-wearable:7.8.0'
+    //compile 'com.google.android.gms:play-services-location:8.4.0'
+    //compile 'com.google.android.gms:play-services-wearable:8.4.0'
+    compile project(':volley')
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:support-v4:23.2.0'
+    compile 'com.android.support:support-v13:23.2.0'
+    compile 'com.android.support:cardview-v7:23.2.0'
+    compile 'com.google.android.gms:play-services-gcm:8.4.0'
     compile 'com.nispok:snackbar:2.6.1'
-                                                                                                                                                                                                                                                                                                    compile project(':volley')
+    compile 'com.android.support:design:23.2.0'
 }
+
+
+
+apply plugin: 'com.google.gms.google-services'
